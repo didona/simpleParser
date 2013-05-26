@@ -29,7 +29,7 @@ public class DXmlParser <O> {
          DocumentBuilder docBuilder = docBuilderFactory.newDocumentBuilder();
          Document doc = docBuilder.parse(new File(fileName));
          Node root = doc.getFirstChild();
-         return recursiveCreateConfiguration(root);
+         return recursiveParse(root);
       } catch (Throwable t) {
          t.printStackTrace();
          System.exit(-1);
@@ -38,7 +38,7 @@ public class DXmlParser <O> {
    }
 
 
-   private O recursiveCreateConfiguration(Node root) {
+   private O recursiveParse(Node root) {
       try {
          return (O) recursiveParseElement(root);
       } catch (Exception e) {
@@ -59,7 +59,8 @@ public class DXmlParser <O> {
          return thisObject;
       }
       //Class cls = Class.forName(this.packageName() + element.getNodeName());
-      Class cls = Class.forName(element.getNodeName());
+     // Class cls = Class.forName(element.getNodeName());
+      Class cls = ClassLoader.getSystemClassLoader().loadClass(element.getNodeName());
       for (int i = 0; i < size; i++) {
          Node elem = childNodes.item(i);
          if (elem.getNodeType() == Node.ELEMENT_NODE) {
@@ -121,7 +122,7 @@ public class DXmlParser <O> {
       log.trace("Going to invoke " + nameMethod + " on Object of " + clazz);
       Class returnType = this.getClassMethodIfExists(clazz, nameMethod);
       if (returnType == null) {
-         throw new NoSuchMethodException("Non ho trovato il metodo " + nameMethod);
+         throw new NoSuchMethodException("Could not find method " + nameMethod);
       }
       Method m = clazz.getMethod(nameMethod, returnType);
       this.typeAwareInvokeSet(o, m, param, returnType);
@@ -139,12 +140,15 @@ public class DXmlParser <O> {
          if (aDeclared.getName().equals(method)) {
             Class[] array = aDeclared.getParameterTypes();
             if (array.length > 1) {
-               throw new RuntimeException("Ho trovato il metodo " + method + "ma non ÔøΩ un setter con un solo parametro!");
+               throw new RuntimeException("Method " + method + " found, but it is not a one-parameter setter");
             } else
                return array[0];
          }
       }
-      return null;
+      //Method not found or...it is in a superclass
+      if(c == Object.class)
+         return null;
+      return getClassMethodIfExists(c.getSuperclass(),method);
    }
 
 

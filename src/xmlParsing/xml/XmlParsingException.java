@@ -1,4 +1,4 @@
-package configuration.xml;
+package xmlParsing.xml;
 
 /**
  * @author Diego Didona, didona@gsd.inesc-id.pt

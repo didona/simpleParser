@@ -1,4 +1,4 @@
-package configuration.test;
+package xmlParsing.test;
 
 /**
  * // TODO: Document this
@@ -6,17 +6,26 @@ package configuration.test;
  * @author diego
  * @since 4.0
  */
-public class DummyOb {
+public class DummyChild {
 
-   private DummyChild dummyChild;
+   private long age;
+   private String name;
    private DummyGrandChild dummyGrandChild;
 
-   public DummyChild getDummyChild() {
-      return dummyChild;
+   public long getAge() {
+      return age;
    }
 
-   public void setDummyChild(DummyChild dummyChild) {
-      this.dummyChild = dummyChild;
+   public void setAge(long age) {
+      this.age = age;
+   }
+
+   public String getName() {
+      return name;
+   }
+
+   public void setName(String name) {
+      this.name = name;
    }
 
    public DummyGrandChild getDummyGrandChild() {
@@ -29,8 +38,9 @@ public class DummyOb {
 
    @Override
    public String toString() {
-      return "DummyOb{" +
-            "dummyChild=" + dummyChild +
+      return "DummyChild{" +
+            "age=" + age +
+            ", name='" + name + '\'' +
             ", dummyGrandChild=" + dummyGrandChild +
             '}';
    }

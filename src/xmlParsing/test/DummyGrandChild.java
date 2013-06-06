@@ -1,4 +1,4 @@
-package configuration.test;
+package xmlParsing.test;
 
 /**
  * // TODO: Document this

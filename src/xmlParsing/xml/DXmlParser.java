@@ -1,4 +1,4 @@
-package configuration.xml;
+package xmlParsing.xml;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -49,7 +49,7 @@ public class DXmlParser <O> {
    }
 
 
-   private java.lang.Object recursiveParseElement(Node element) throws InvocationTargetException, NoSuchMethodException, IllegalAccessException, ClassNotFoundException, InstantiationException {
+   private Object recursiveParseElement(Node element) throws InvocationTargetException, NoSuchMethodException, IllegalAccessException, ClassNotFoundException, InstantiationException {
       log.trace("Parsing " + element.getNodeName());
       java.lang.Object thisObject = parseElementNode(element);
       NodeList childNodes = element.getChildNodes();
@@ -97,8 +97,8 @@ public class DXmlParser <O> {
       }
    }
 
-   //This does not support nested Element  yet (I should only put the cycle I use to create the root configuration in a recursive method)
-   private java.lang.Object parseElementNode(Node element) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException, ClassNotFoundException, InstantiationException {
+   //This does not support nested Element  yet (I should only put the cycle I use to create the root xmlParsing in a recursive method)
+   private Object parseElementNode(Node element) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException, ClassNotFoundException, InstantiationException {
 
       //Class clazz = Class.forName(packageName() + element.getNodeName());
       Class clazz = Class.forName(element.getNodeName());
@@ -115,7 +115,7 @@ public class DXmlParser <O> {
       return newInstance;
    }
 
-   private void invokeSet(java.lang.Object o, Class clazz, String nodeName, java.lang.Object param) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+   private void invokeSet(Object o, Class clazz, String nodeName, Object param) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
 
       String simpleName = ObjectFromFullQualifiedName(nodeName);
       String nameMethod = "set" + simpleName.substring(0, 1).toUpperCase() + simpleName.substring(1);//nodeName.substring(0, 1).toUpperCase() + nodeName.substring(1);

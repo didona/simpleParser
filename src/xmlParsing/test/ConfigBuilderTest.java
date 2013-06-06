@@ -1,6 +1,6 @@
-package configuration.test;
+package xmlParsing.test;
 
-import configuration.xml.DXmlParser;
+import xmlParsing.xml.DXmlParser;
 
 /**
  * // TODO: Document this

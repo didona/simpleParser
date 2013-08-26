@@ -16,4 +16,17 @@
         </dependency>
     </dependencies>
 
+    <distributionManagement>
+           <repository>
+               <id>cloud</id>
+               <name>cloud</name>
+               <url>http://cloudtm.ist.utl.pt:8083/nexus/content/repositories/releases/</url>
+           </repository>
+           <snapshotRepository>
+               <id>cloud</id>
+               <name>cloud</name>
+               <url>http://cloudtm.ist.utl.pt:8083/nexus/content/repositories/snapshots/</url>
+           </snapshotRepository>
+       </distributionManagement>
+
 </project>

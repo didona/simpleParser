@@ -23,6 +23,10 @@ public class DXmlParser <O> {
    private static final String PACKAGE_SEPARATOR = "\\.";
 
 
+   static {
+      //PropertyConfigurator.configure("conf/log4j.properties");
+   }
+
    public final O parse(String fileName) {
       try {
          DocumentBuilderFactory docBuilderFactory = DocumentBuilderFactory.newInstance();

@@ -1,4 +1,4 @@
-package xmlParsing.test;
+package simple;
 
 import xmlParsing.xml.DXmlParser;
 

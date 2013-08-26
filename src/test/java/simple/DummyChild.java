@@ -1,4 +1,4 @@
-package xmlParsing.test;
+package simple;
 
 /**
  * // TODO: Document this

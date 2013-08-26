@@ -1,4 +1,4 @@
-package xmlParsing.xml;
+package xml;
 
 /**
  * @author Diego Didona, didona@gsd.inesc-id.pt

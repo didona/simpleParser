@@ -1,6 +1,7 @@
 package simple;
 
-import xmlParsing.xml.DXmlParser;
+
+import xml.DXmlParser;
 
 /**
  * // TODO: Document this

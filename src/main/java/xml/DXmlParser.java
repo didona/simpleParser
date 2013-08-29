@@ -106,7 +106,7 @@ public class DXmlParser <O> {
 
       //Class clazz = Class.forName(packageName() + element.getNodeName());
       Class clazz = Class.forName(element.getNodeName());
-      java.lang.Object newInstance = clazz.newInstance();
+      Object newInstance = clazz.newInstance();
       if (element.hasAttributes()) {
          for (int k = 0; k < element.getAttributes().getLength(); k++) {
             Node attribute = element.getAttributes().item(k);

@@ -22,6 +22,7 @@ public class DXmlParser<O> {
    private static final Log log = LogFactory.getLog(DXmlParser.class);
    private static final String PACKAGE_SEPARATOR = "\\.";
    private static final String customSetterString = "setWith";
+   private static final boolean trace = log.isTraceEnabled();
 
 
    static {
@@ -118,6 +119,9 @@ public class DXmlParser<O> {
             Node attribute = element.getAttributes().item(k);
             String nodeName = attribute.getNodeName();
             String param = attribute.getNodeValue();
+            if (trace) {
+               log.trace("name " + nodeName + " param " + param);
+            }
             if (nodeName.equals(DXmlParser.customSetterString)) {
                setWith = param;
             } else {

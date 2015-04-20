@@ -29,6 +29,11 @@ public class DXmlParser<O> {
       //PropertyConfigurator.configure("conf/log4j.properties");
    }
 
+   public final O buildObject(String fileName) throws ClassNotFoundException, IllegalAccessException, InstantiationException {
+      Class clazz = Class.forName(fileName);
+      return (O) clazz.newInstance();
+   }
+
    public final O parse(String fileName) {
       try {
          DocumentBuilderFactory docBuilderFactory = DocumentBuilderFactory.newInstance();
